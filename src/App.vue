@@ -1,78 +1,69 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import { ref } from 'vue';
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-import 'swiper/css';
-
-</script>
-
 <template>
-  <div>
-    <!-- 轮播器 -->
-    <swiper :options="swiperOptions">
-      <swiper-slide>
-        <img src="https://via.placeholder.com/1920x200?text=Slide+1" alt="Slide 1">
-      </swiper-slide>
-      <swiper-slide>
-        <img src="https://via.placeholder.com/1920x200?text=Slide+2" alt="Slide 2">
-      </swiper-slide>
-      <swiper-slide>
-        <img src="https://via.placeholder.com/1920x200?text=Slide+3" alt="Slide 3">
-      </swiper-slide>
-    </swiper>
-    <!-- 菜单栏 -->
-    <div class="menu-bar">
-      <button v-for="(tab, index) in tabs" :key="index" :class="{ active: activeTab === index }" @click="activeTab = index">
-        {{ tab }}
-      </button>
-    </div>
-    <!-- 内容展示区域 -->
-    <div class="content">
-      <div v-if="activeTab === 0">这是第一个 tab 的内容</div>
-      <div v-if="activeTab === 1">这是第二个 tab 的内容</div>
-      <div v-if="activeTab === 2">这是第三个 tab 的内容</div>
-      <div v-if="activeTab === 3">这是第四个 tab 的内容</div>
-      <div v-if="activeTab === 4">这是第五个 tab 的内容</div>
-    </div>
-  </div>
-
-  
+    <el-container>
+      <el-header class="header" style="height: 500px"><div class="header">五维农业</div> </el-header>
+      <el-main class="main">
+      
+      </el-main>
+      <el-footer class="footer">Footer</el-footer>
+    </el-container>
 </template>
 
 
+<script lang="ts" setup>
+import { Menu as IconMenu, Message, Setting } from "@element-plus/icons-vue";
+import HelloWorld from "./components/HelloWorld.vue";
+import { ref } from "vue";
+import { Swiper, SwiperSlide } from "vue-awesome-swiper";
+import "swiper/css";
+
+
+</script>
+
+<style>
+.app{
+  width: 100% !important;
+}
+</style>
+
 <style scoped>
-.swiper {
+
+
+
+.main{
   width: 100%;
-  height: 200px;
+  display: block;
+  height: 1000px;
+  background-color: red;
 }
 
-.swiper-slide img {
+.footer{
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: 100px;
+  
+  background-color: #3269b1;
 }
 
-.menu-bar {
+.el-container {
   display: flex;
-  justify-content: center;
-  background-color: #f0f0f0;
-  padding: 10px 0;
+  flex-direction: column;
+  width: 100%;
 }
 
-.menu-bar button {
-  margin: 0 10px;
-  padding: 5px 10px;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
+.header{
+  height: 200px;
+  background-color: #3269b1;
 }
 
-.menu-bar button.active {
-  font-weight: bold;
-  color: #646cff;
+.el-header {
+  height: 200px;
+  background-color: #3269b1;
+  color: #333;
+  text-align: center;
 }
-
-.content {
-  padding: 20px;
+.el-header,
+.el-main,
+.el-footer {
+  width: 100%;
 }
 </style>
