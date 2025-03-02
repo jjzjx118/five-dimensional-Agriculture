@@ -23,6 +23,7 @@ defineOptions({
  justify-content: center;
  align-items: center;
  /* color: white; */
+ margin-bottom: 10px;
 
 }
 

@@ -58,6 +58,7 @@ defineOptions({
 .el-footer {
   padding: unset;
   height: unset;
+  margin-bottom: 8px;
 }
 
 .el-container {

@@ -1,12 +1,17 @@
 <template>
   <ElAffix class="top-part">
     <el-menu
-      default-active="cpn-des"
+     :default-active="activeIndex"
+      text-color="#075234"
+      active-text-color="#075234"
       class="header"
       mode="horizontal"
       @select="handleSelect"
     >
-      <div class="Logo">LOGO Here</div>
+      <div class="logo-part">
+        <img class="logo" src="@/assets/logo2.png" alt="本地图片" />
+        九江五维农业科技开发有限公司
+      </div>
       <div class="menu-part">
         <el-menu-item index="cpn-des">公司简介</el-menu-item>
         <el-menu-item index="prd-des">产品简介</el-menu-item>
@@ -18,9 +23,9 @@
 </template>
 
 <script lang="ts" setup>
-
 import { ElAffix, ElMenu, ElMenuItem, ElSubMenu } from "element-plus";
-
+import { ref } from 'vue'
+const activeIndex = ref('cpn-des')
 const handleSelect = (key: string, keyPath: string[]) => {
   console.log(key, keyPath);
   scrollToSection(key);
@@ -30,7 +35,13 @@ const scrollToSection = (id) => {
   console.log(1111, String(id));
   const targetElement = document.querySelector(`#${id}`);
   console.log(2222, targetElement);
-  if (targetElement) {
+
+  if (id === "cpn-des") {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  } else if (targetElement) {
     const offset = 50; // 偏移量，单位为像素
     const targetPosition =
       targetElement.getBoundingClientRect().top + window.scrollY - offset;
@@ -39,6 +50,8 @@ const scrollToSection = (id) => {
       top: targetPosition,
       behavior: "smooth",
     });
+  } else {
+    console.log("Element not found");
   }
 };
 
@@ -54,6 +67,21 @@ defineOptions({
   display: block;
 }
 
+/* .el-menu-item.is-active {
+    color: #E8F1EE
+} */
+
+.el-menu--horizontal.el-menu {
+    border-bottom: solid 1px var(--el-menu-border-color);
+}
+
+.logo-part {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+}
+
 .top-part {
   display: flex;
   flex-direction: column;
@@ -66,8 +94,14 @@ defineOptions({
   border-bottom: 1px solid #ebeef5;
 }
 
-.Logo {
+.logo {
   margin-left: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  aspect-ratio: 269/211;
+  margin-right: 15px;
 }
 
 .menu-part {
