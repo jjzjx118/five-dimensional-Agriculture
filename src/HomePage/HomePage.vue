@@ -11,8 +11,10 @@
 </template>
 
 <script lang="ts" setup>
+import { ElContainer, ElMain ,ElFooter,ElHeader} from "element-plus";
 import Header from "./HomePage_header.vue";
 import Body from "./HomePage_body.vue";
+
 
 defineOptions({
   name: "HomePage",
@@ -35,15 +37,17 @@ defineOptions({
 .img {
   width: 100%;
   height: 400px;
-  object-fit: cover;
+  /* object-fit: cover; */
 }
 
 
 .main {
   width: 100%;
-  display: block;
+  display: flex;
+  flex-direction: column;
   height:fit-content;
   background-color: red;
+  padding: 0 40px;
 }
 
 .footer {
@@ -60,12 +64,11 @@ defineOptions({
 }
 
 .header {
-  height: 200px;
   background-color: #3269b1;
 }
 
 .el-header {
-  height: 200px;
+
   background-color: #3269b1;
   color: #333;
   text-align: center;

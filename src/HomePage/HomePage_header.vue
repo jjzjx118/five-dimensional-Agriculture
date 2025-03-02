@@ -1,27 +1,45 @@
 <template>
-  <el-menu
-    :default-active="activeIndex"
-    class="el-menu-demo"
-    mode="horizontal"
-    @select="handleSelect"
-  >
-    <el-menu-item index="0">LOGO Here</el-menu-item>
-    <el-menu-item index="1">公司简介</el-menu-item>
-    <el-menu-item index="2">产品简介</el-menu-item>
-    <el-menu-item index="3">店铺链接</el-menu-item>
-    <el-menu-item index="4">联系我们</el-menu-item>
-  </el-menu>
-  <img class="top_img" src="@/assets/image/bgd_2.png" alt="本地图片" />
+  <ElAffix class="top-part">
+    <el-menu
+      default-active="cpn-des"
+      class="header"
+      mode="horizontal"
+      @select="handleSelect"
+    >
+      <div class="Logo">LOGO Here</div>
+      <div class="menu-part">
+        <el-menu-item index="cpn-des">公司简介</el-menu-item>
+        <el-menu-item index="prd-des">产品简介</el-menu-item>
+        <el-menu-item index="shop-link">店铺链接</el-menu-item>
+        <el-menu-item index="contact-us">联系我们</el-menu-item>
+      </div>
+    </el-menu>
+  </ElAffix>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
-import { ElMenu, ElMenuItem, ElSubMenu } from "element-plus";
 
-const activeIndex = ref("1");
-const activeIndex2 = ref("1");
+import { ElAffix, ElMenu, ElMenuItem, ElSubMenu } from "element-plus";
+
 const handleSelect = (key: string, keyPath: string[]) => {
   console.log(key, keyPath);
+  scrollToSection(key);
+};
+
+const scrollToSection = (id) => {
+  console.log(1111, String(id));
+  const targetElement = document.querySelector(`#${id}`);
+  console.log(2222, targetElement);
+  if (targetElement) {
+    const offset = 50; // 偏移量，单位为像素
+    const targetPosition =
+      targetElement.getBoundingClientRect().top + window.scrollY - offset;
+
+    window.scrollTo({
+      top: targetPosition,
+      behavior: "smooth",
+    });
+  }
 };
 
 defineOptions({
@@ -31,14 +49,36 @@ defineOptions({
 
 <style>
 .el-menu--horizontal {
-  --el-menu-horizontal-height: 50px;
+  --el-menu-horizontal-height: 56px;
   align-items: center;
   display: block;
 }
 
+.top-part {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  width: 100%;
+  justify-content: space-between;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ebeef5;
+}
+
+.Logo {
+  margin-left: 12px;
+}
+
+.menu-part {
+  display: flex;
+  flex-direction: row;
+  right: 0px;
+}
 
 .top_img {
   width: 100%;
-  height: 435px; 
+  height: 435px;
+  display: block;
 }
 </style>
