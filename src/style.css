@@ -64,7 +64,7 @@ button:focus-visible {
   /* margin: 0 auto; */
   /* padding: 2rem; */
   width: 100%;
-  
+  background-color: rgb(249 250 251);
   text-align: center;
 }
 
@@ -79,4 +79,24 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* Custom CSS */
+.shadowBorder {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: #e5e7eb;
+  box-shadow: 0 8px 10px -0 rgba(0, 0, 0, 0.1);
+}
+
+.mian-text-font {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+}
+
+.sub-text-font {
+  font-size: 1.125rem;
+  color: rgb(75 85 99);
 }

@@ -36,28 +36,105 @@
           src="@/assets/image/Home_Product_IMG/morel_chaocai2.png"
           alt="本地图片"
         />
-     
       </div>
     </div>
 
     <div id="shop-link" class="shop_link">
-      <span>店铺链接</span>
-      <span> </span>
+      <div class="prd-top">店铺链接</div>
+
+      <div class="prd-link-container">
+        <div class="prd-shop">
+          <div class="prd-link-icon">
+            <img
+              class="svg-icon"
+              src="@\assets\Icons\taobao.svg"
+              alt="SVG Icon"
+            />
+          </div>
+          <div class="prd-link-text">淘宝店铺</div>
+          <el-button
+            @click="handleClick('tb')"
+            class="accessBtn"
+            color="#2B7A0B"
+            >立即访问</el-button
+          >
+        </div>
+
+        <div class="prd-shop">
+          <div class="prd-link-icon">
+            <img class="svg-icon" src="@\assets\Icons\jd.svg" alt="SVG Icon" />
+          </div>
+          <div class="prd-link-text">京东店铺</div>
+          <el-button class="accessBtn" disabled color="#2B7A0B"
+            >暂未开通</el-button
+          >
+        </div>
+
+        <div class="prd-shop">
+          <div class="prd-link-icon">
+            <img
+              class="svg-icon"
+              src="@\assets\Icons\wechat.svg"
+              alt="SVG Icon"
+            />
+          </div>
+          <div class="prd-link-text">微信小店</div>
+          <el-button class="accessBtn" disabled color="#2B7A0B"
+            >暂未开通</el-button
+          >
+        </div>
+      </div>
     </div>
 
     <div id="contact-us" class="contact_us">
-      <span>联系我们</span>
+      <div>
+        <div class="mian-text-font">联系我们</div>
+        <div style="margin-top: 8px">期待与您建立长期合作关系</div>
+      </div>
+      <div class="contact-card shadowBorder">
+        <div class="contact-card-inner">
+          <div class="contact-item">
+            <img
+              class="svg-icon-small"
+              src="@\assets\Icons\phone.svg"
+              alt="SVG Icon"
+            />
+            <span class="contact-text">400-888-1234</span>
+          </div>
+          <div class="contact-item">
+            <img
+              class="svg-icon-small"
+              src="@\assets\Icons\mail.svg"
+              alt="SVG Icon"
+            />
+            <span class="contact-text">jjzjx118@qq.com</span>
+          </div>
+
+          <div class="contact-item">
+            <img
+            
+              class="svg-icon-small"
+              src="@\assets\Icons\address.svg"
+              alt="SVG Icon"
+            />
+            <span class="contact-text">江西省九江市奥林匹克花园</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import { ElImage, ElMenu, ElMenuItem, ElSubMenu } from "element-plus";
+import { ElImage, ElMenu, ElMenuItem, ElSubMenu, ElButton } from "element-plus";
 // import imageUrl from 'src/assets/image/bgd_2.png';
 // console.log(imageUrl);
 
-const urls = ["@/assets/image/Home_Product_IMG/morel_chaocai2.png"];
+const handleClick = (link) => {
+  console.log(link);
+  window.open("https://www.taobao.com", "_blank");
+};
 
 defineOptions({
   name: "Body",
@@ -133,17 +210,15 @@ defineOptions({
   display: flex;
   flex-direction: row;
   width: 100%;
-  justify-content:center ;
+  justify-content: center;
   margin: 20px 0px;
 }
 
 .prd-img {
-
   aspect-ratio: 1 / 1;
   object-fit: cover; /* 让图片覆盖整个容器 */
   width: 20%;
   margin: 0px 50px;
-
 }
 
 .products_des,
@@ -151,7 +226,7 @@ defineOptions({
   height: fit-content;
   display: flex;
   flex-direction: column;
-  /* padding: 20px; */
+  background-color: rgb(249 250 251);
   margin: 20px;
 }
 
@@ -160,10 +235,122 @@ defineOptions({
 }
 
 .products_des {
-  background-color: yellow;
+  /* background-color: yellow; */
+}
+
+.prd-link-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  margin: 20px 0px;
+  background-color: rgb(249 250 251);
+}
+
+.prd-shop {
+  aspect-ratio: 1 / 1;
+  width: 20%;
+  margin: 0px 50px;
+  border: 1px solid #ccc;
+  box-shadow: 0 8px 10px -0 rgba(0, 0, 0, 0.1);
+  background-color: rgb(255 255 255);
+  transition-duration: 0.3s;
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: #e5e7eb;
+}
+.prd-link-icon {
+  width: 30%;
+  aspect-ratio: 1 / 1;
+  background-color: rgb(219, 29, 178);
+  border-radius: 9999px;
+  background-color: rgb(43 122 11 / 0.1);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.svg-icon {
+  width: 50%;
+  height: 50%;
+}
+
+.prd-link-text {
+  font-size: 1.25rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  transform: translateY(20px);
+}
+.accessBtn {
+  width: 70%;
+  aspect-ratio: 1/4;
+
+  margin-top: 40px;
 }
 
 .shop_link {
-  background-color: rgb(219, 29, 178);
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: #e5e7eb;
+}
+
+/* CONTACT US */
+
+.contact_us {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-card {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  background-color: rgb(255 255 255);
+  height: 250px;
+}
+
+.contact-card-inner {
+  display: flex; /* 启用 Flex 布局 */
+  flex-direction: column; /* 子元素垂直排列 */
+  align-items: flex-start;
+}
+
+.svg-icon-small {
+  width: 20px;
+  height: 20px;
+  /* margin-right: 10px; */
+}
+
+.contact-text {
+  font-size: 1.25rem;
+  text-align: left;
+  margin-left: 10px;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
 }
 </style>

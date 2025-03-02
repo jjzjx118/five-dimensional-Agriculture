@@ -1,20 +1,18 @@
 <template>
   <el-container>
     <el-header class="header">
-
       <Header />
-
     </el-header>
     <el-main class="main"> <Body /> </el-main>
-    <el-footer class="footer">Footer</el-footer>
+    <el-footer><Footer /></el-footer>
   </el-container>
 </template>
 
 <script lang="ts" setup>
-import { ElContainer, ElMain ,ElFooter,ElHeader} from "element-plus";
+import { ElContainer, ElMain, ElFooter, ElHeader } from "element-plus";
 import Header from "./HomePage_header.vue";
 import Body from "./HomePage_body.vue";
-
+import Footer from "./HomePage_footer.vue";
 
 defineOptions({
   name: "HomePage",
@@ -40,21 +38,26 @@ defineOptions({
   /* object-fit: cover; */
 }
 
-
 .main {
   width: 100%;
   display: flex;
   flex-direction: column;
-  height:fit-content;
-  background-color: red;
-  padding: 0 40px;
+  height: fit-content;
+  /* padding: 0 40px; */
 }
 
-.footer {
-  display: block;
+.el-header {
+  background-color: unset;
+  color: unset;
+  text-align: center;
   width: 100%;
-  height: 100px;
-  background-color: #3269b1;
+  height: 100%;
+  padding: unset;
+}
+
+.el-footer {
+  padding: unset;
+  height: unset;
 }
 
 .el-container {
@@ -68,7 +71,6 @@ defineOptions({
 }
 
 .el-header {
-
   background-color: #3269b1;
   color: #333;
   text-align: center;
