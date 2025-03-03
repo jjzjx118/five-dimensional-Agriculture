@@ -3,7 +3,7 @@ import vue from '@vitejs/plugin-vue';
 import path from 'path';
 
 export default defineConfig({
-  base: "/five-dimensional-Agriculture/", // 你的仓库名
+  base: "/", // 你的仓库名
   build: {
     outDir: "dist",
   },
